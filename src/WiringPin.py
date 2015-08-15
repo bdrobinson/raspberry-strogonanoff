@@ -1,4 +1,4 @@
-import wiringpi
+import wiringpi2 as wiringpi
 
 wiringpi.wiringPiSetup()
 
@@ -9,8 +9,9 @@ class WiringPin:
         self.direction = direction
 
     def export(self):
-        wiringpi.pinMode(self.gpio_number,
-            wiringpi.OUTPUT if self.direction == "out" else wiringpi.INPUT)
+        wiringpi.pinMode(
+            self.gpio_number,
+            wiringpi.GPIO.OUTPUT if self.direction == "out" else wiringpi.GPIO.INPUT)
         return self
 
     def set_value(self, value):
